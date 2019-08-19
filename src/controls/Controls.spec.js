@@ -11,28 +11,27 @@ describe("<Controls />", () => {
         expect(tree.toJSON()).toMatchSnapshot();
     })
 
-    // it("expects ")
+    it("lock to toggle when clicked", () => {
+        const mockClose = jest.fn()
+        const { getByText } = render(<Controls toggleLocked={mockClose} locked={true} closed={true} />)
+        fireEvent.click(getByText("Unlock Gate"))
+        expect(mockClose).toHaveBeenCalled();
+    })
+
+    it("open/close to toggle when clicked", () => {
+        const mockClose = jest.fn()
+        const { getByText } = render(<Controls toggleLocked={mockClose} locked={false} closed={false} />)
+        fireEvent.click(getByText("Close Gate"))
+        expect(mockClose).toHaveBeenCalled();
+    })
+
+    it("can determine if button is disabled from property", () => {
+        const { getByText } = render(<Controls />)
+        expect(getByText("Lock Gate")).disabled.toBeTruthy();
+    })
 })
 
-// describe("toggleClosed", () => {
-//     it('should toggle the closed state and passes it into controls', () => {
-//         const unlocked = 'Unlocked';
-//         const locked = 'Locked';
 
-//         const { getByText } = render(<Display  />)
-//     })
-// })
-
-// describe("toggledLocked", () => {
-//     it('should toggle the locked state and passes it into controls', () => {
-//         const display = true ? 'Closed' : 'Open';
-//     })
-// }) 
-// describe("toggleClosed", () => {
-//     it('should toggle the closed state and passes it into controls', () => {
-//         const display = true ? 'Closed' : 'Unlocked'; 
-//     })
-// })
 
 // ### Controls Component
 
