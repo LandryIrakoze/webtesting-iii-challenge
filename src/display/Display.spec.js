@@ -8,7 +8,13 @@ import Display from './Display';
 describe("<Display />", () => {
     it("matches snapshot", () => {
         const tree = renderer.create(<Display />);
-        expect(tree.toJSON).toMatchSnapshot();
+        expect(tree.toJSON()).toMatchSnapshot();
+    })
+
+    it("displays closed if closed prop is true", () => {
+        const statusMock = true;
+
+        const { getByText } = render(<Display closed={statusMock} />)
     })
 })
 

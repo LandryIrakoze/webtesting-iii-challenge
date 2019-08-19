@@ -4,13 +4,40 @@ import renderer from "react-test-renderer";
 import { render, fireEvent } from "@testing-library/react";
 
 import Dashboard from './Dashboard';
+import Display from "../display/Display";
+import Controls from "../controls/Controls";
 
 describe("<Dashboard />", () => {
     it("matches snapshot", () => {
         const tree = renderer.create(<Dashboard />);
-        expect(tree.toJSON).toMatchSnapshot();
+        expect(tree.toJSON()).toMatchSnapshot();
     })
 })
+
+describe("<Render />", () => {
+    it("matches snapshot", () => {
+        const tree = renderer.create(<Display />)
+        expect(tree.toJSON()).toMatchSnapshot();
+    })
+})
+
+describe("<Control />", () => {
+    it("matches snapshot", () => {
+        const tree = renderer.create(<Controls />)
+        expect(tree.toJSON()).toMatchSnapshot();
+    })
+})
+
+// describe("toggledLocked", () => {
+//     it('should toggle the locked state and passes it into controls', () => {
+
+//     })
+// }) 
+// describe("toggleClosed", () => {
+//     it('should toggle the closed state and passes it into controls', () => {
+
+//     })
+// })
 
 // ### Dashboard
 
