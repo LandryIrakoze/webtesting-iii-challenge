@@ -10,7 +10,29 @@ describe("<Controls />", () => {
         const tree = renderer.create(<Controls />);
         expect(tree.toJSON()).toMatchSnapshot();
     })
+
+    // it("expects ")
 })
+
+// describe("toggleClosed", () => {
+//     it('should toggle the closed state and passes it into controls', () => {
+//         const unlocked = 'Unlocked';
+//         const locked = 'Locked';
+
+//         const { getByText } = render(<Display  />)
+//     })
+// })
+
+// describe("toggledLocked", () => {
+//     it('should toggle the locked state and passes it into controls', () => {
+//         const display = true ? 'Closed' : 'Open';
+//     })
+// }) 
+// describe("toggleClosed", () => {
+//     it('should toggle the closed state and passes it into controls', () => {
+//         const display = true ? 'Closed' : 'Unlocked'; 
+//     })
+// })
 
 // ### Controls Component
 

@@ -4,6 +4,7 @@ import renderer from "react-test-renderer";
 import { render, fireEvent } from "@testing-library/react";
 
 import Display from './Display';
+import { queryAllByTestId } from "react-testing-library";
 
 describe("<Display />", () => {
     it("matches snapshot", () => {
@@ -11,12 +12,42 @@ describe("<Display />", () => {
         expect(tree.toJSON()).toMatchSnapshot();
     })
 
-    it("displays closed if closed prop is true", () => {
-        const statusMock = true;
+    it("displays open and unlocked", () => {
+        const { queryByText } = render(<Display/>)
 
-        const { getByText } = render(<Display closed={statusMock} />)
+        expect(queryByText(/unlocked/i)).toBeTruthy()
+        expect(queryByText(/open/i)).toBeTruthy()
     })
+
+    it("should have red class when locked or closed", () => {
+        const { queryAllByTestId } = render(<Display closed={true} locked={true} />);
+        expect(queryAllByTestId("led red-led")).toBeTruthy()
+    })
+    
+    it("should have green class when unlocked or open", () => {
+        const { queryAllByTestId } = render(<Display closed={false} locked={false} />);
+        expect(queryAllByTestId("led red-green")).toBeTruthy()
+    })
+    
 })
+
+// describe("toggledLocked", () => {
+//     it('should toggle the locked state and passes it into controls', () => {
+//         const open = 'Open';
+//         const closed = 'Closed';
+
+//         const unlocked = 'Unlocked';
+//         const locked = 'Locked';
+
+//         const { getByText } = render(<Display locked={locked} closed={open} />)
+//         const { getByText } = render(<Display locked={locked} closed={closed} />)
+
+//         const { getByText } = render(<Display locked={unlocked} closed={open} />)
+//         const { getByText } = render(<Display locked={unlocked} closed={closed} />)
+//     })
+// }) 
+
+
 
 // ### Display Component
 

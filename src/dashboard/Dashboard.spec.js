@@ -28,16 +28,7 @@ describe("<Control />", () => {
     })
 })
 
-// describe("toggledLocked", () => {
-//     it('should toggle the locked state and passes it into controls', () => {
 
-//     })
-// }) 
-// describe("toggleClosed", () => {
-//     it('should toggle the closed state and passes it into controls', () => {
-
-//     })
-// })
 
 // ### Dashboard
 
